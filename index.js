@@ -1,6 +1,6 @@
-// const { MongoClient } = require('mongodb');
+//================================ import || required files ====================================
+//============================================================================================//
 const express = require('express')
-// const ObjectId = require('mongodb').ObjectId
 const cors = require('cors');
 const dbConnect = require('./utils/dbConnect');
 const app = express()
@@ -8,32 +8,26 @@ require('dotenv').config()
 const port = process.env.PORT || 7000
 
 
-// routes import
+//=================================== routes import =============================================
+//=============================================================================================//
 const productsRoute = require("./routes/v1/products.route");
 
-// middleware calls 
+
+//================================== middleware calls ==========================================
+//============================================================================================//
 app.use(cors())
 app.use(express.json())
 app.use(express.static("public"))
 app.set('view engine','ejs')
 
-// database connect 
+//================================= database connect ===========================================
+//============================================================================================//
 dbConnect()
 
-// routes calls 
+//====================================== routes calls ==========================================
+//============================================================================================//
 app.use("/api/v1/products",productsRoute)
 
-const run = async() =>{
-    try{
-        // await client.connect()
-        // const database = client.db("watch_world");
-        
-    }
-    finally{
-
-    }
-}
-run().catch(console.dir)
 
 app.get('/',(req,res)=>{
     // res.sendFile(__dirname + "/public/index.html")
