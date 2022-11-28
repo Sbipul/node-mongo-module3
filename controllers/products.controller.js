@@ -1,14 +1,22 @@
+const products = [
+    {id:1,name:'mobile'},
+    {id:2,name:'laptop'},
+    {id:3,name:'earphone'},
+    {id:4,name:'keyboard'},
+    {id:5,name:'vr box'},
+]
 module.exports.getAllProducts = async (req, res,next) => {
-//   const {ip,query,params,body,headers} = req;
-//   res.download(__dirname + '/products.controller.js');
-    // res.redirect("/login")
-    res.send("get all product get request found")
+    const {limit,page} = req.query;
+    console.log(limit,page)
+    res.json(products)
 };
 module.exports.saveProduct = async(req,res)=>{
-    // const product = req.body
-    // const result = await productsCollection.insertOne(product)
-    res.send('add a product post request found')
+    const product = req.body
+    products.push(product)
+    res.send(products)
 }
 module.exports.getAllDetails = (req,res,next) => {
-    res.send('this is product details')
+    const {id} = req.params;
+    let foundProduct = products.find(product=> product.id==id)
+    res.send(foundProduct)
 }
