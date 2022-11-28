@@ -9,3 +9,6 @@ module.exports.saveProduct = async(req,res)=>{
     // const result = await productsCollection.insertOne(product)
     res.send('add a product post request found')
 }
+module.exports.getAllDetails = (req,res,next) => {
+    res.send('this is product details')
+}
