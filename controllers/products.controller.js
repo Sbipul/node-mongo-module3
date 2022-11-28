@@ -20,3 +20,16 @@ module.exports.getAllDetails = (req,res,next) => {
     let foundProduct = products.find(product=> product.id==id)
     res.send(foundProduct)
 }
+module.exports.updateProduct = (req,res,next)=>{
+    const {id} = req.params;
+    const newData = req.body;
+    const updateData = products.find(product=> product.id==id)
+    updateData.id = +newData.id;
+    updateData.name = newData.name
+    res.send(products);
+}
+module.exports.deleteProduct = (req,res,next) =>{
+    const {id} = req.params;
+    let newData = products.filter(product => product.id !== +id)
+    res.send(newData)
+}
