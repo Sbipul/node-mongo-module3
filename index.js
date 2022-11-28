@@ -6,11 +6,18 @@ const dbConnect = require('./utils/dbConnect');
 const app = express()
 require('dotenv').config()
 const port = process.env.PORT || 7000
+
+// routes import
 const productsRoute = require("./routes/v1/products.route")
+
+// middleware calls 
 app.use(cors())
 app.use(express.json())
 
+// database connect 
 dbConnect()
+
+// routes calls 
 app.use("/api/v1/products",productsRoute)
 
 
